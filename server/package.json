@@ -1,0 +1,14 @@
+{
+  "name": "guardian-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "node --watch --disable-warning=ExperimentalWarning src/index.ts",
+    "start": "NODE_ENV=production node --disable-warning=ExperimentalWarning src/index.ts",
+    "typecheck": "tsc -p ."
+  }
+}
