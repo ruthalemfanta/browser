@@ -1,4 +1,4 @@
-const REPO = import.meta.env.VITE_GITHUB_REPO || "OWNER/REPO";
+const REPO = import.meta.env.VITE_GITHUB_REPO || "ruthalemfanta/browser";
 const BASE = `https://github.com/${REPO}/releases/latest/download`;
 
 export const RELEASES_URL = `https://github.com/${REPO}/releases/latest`;
