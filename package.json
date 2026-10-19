@@ -1,5 +1,5 @@
 {
-  "name": "big-city-greens-browser",
+  "name": "wonderly",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -18,8 +18,8 @@
     "dist:linux": "npm run build && electron-builder --linux AppImage"
   },
   "build": {
-    "appId": "com.example.bigcitygreensbrowser",
-    "productName": "Big City Greens Browser",
+    "appId": "com.wonderly.browser",
+    "productName": "Wonderly",
     "directories": {
       "output": "release"
     },

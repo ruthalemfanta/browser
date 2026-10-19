@@ -1,16 +1,14 @@
 import fs from "node:fs";
-import path from "node:path";
-import { DatabaseSync } from "node:sqlite";
+import { createClient, type InArgs, type Transaction } from "@libsql/client";
 import { config } from "./config.ts";
 
-fs.mkdirSync(config.dataDir, { recursive: true });
+if (config.databaseUrl.startsWith("file:")) fs.mkdirSync(config.dataDir, { recursive: true });
 
-export const db = new DatabaseSync(path.join(config.dataDir, "guardian.db"));
+export const db = createClient({ url: config.databaseUrl, authToken: config.databaseAuthToken, intMode: "number" });
 
-db.exec(`
-  PRAGMA journal_mode = WAL;
-  PRAGMA foreign_keys = ON;
+export type Executor = Pick<Transaction, "execute">;
 
+await db.executeMultiple(`
   CREATE TABLE IF NOT EXISTS parents (
     id INTEGER PRIMARY KEY,
     email TEXT NOT NULL UNIQUE,
@@ -61,20 +59,33 @@ db.exec(`
   CREATE INDEX IF NOT EXISTS logs_device_ts ON logs (device_id, ts DESC);
 `);
 
-export function transaction<T>(fn: () => T): T {
-  db.exec("BEGIN");
+export async function run(sql: string, args: InArgs = [], exec: Executor = db) {
+  return exec.execute({ sql, args });
+}
+
+export async function all<T>(sql: string, args: InArgs = [], exec: Executor = db) {
+  return (await run(sql, args, exec)).rows as unknown as T[];
+}
+
+export async function get<T>(sql: string, args: InArgs = [], exec: Executor = db) {
+  return (await all<T>(sql, args, exec))[0] as T | undefined;
+}
+
+export async function transaction<T>(fn: (tx: Transaction) => Promise<T>): Promise<T> {
+  const tx = await db.transaction("write");
   try {
-    const result = fn();
-    db.exec("COMMIT");
+    const result = await fn(tx);
+    await tx.commit();
     return result;
-  } catch (error) {
-    db.exec("ROLLBACK");
-    throw error;
+  } finally {
+    tx.close();
   }
 }
 
 setInterval(() => {
   const now = Date.now();
-  db.prepare("DELETE FROM sessions WHERE expires_at <= ?").run(now);
-  db.prepare("DELETE FROM pairing_codes WHERE expires_at <= ?").run(now);
+  db.batch([
+    { sql: "DELETE FROM sessions WHERE expires_at <= ?", args: [now] },
+    { sql: "DELETE FROM pairing_codes WHERE expires_at <= ?", args: [now] }
+  ], "write").catch(error => console.error(error));
 }, 60 * 60_000).unref();

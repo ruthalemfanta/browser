@@ -1,6 +1,6 @@
 import crypto from "node:crypto";
 import type { ServerResponse } from "node:http";
-import { db } from "./db.ts";
+import { get, run } from "./db.ts";
 import { HttpError, isSecure, type Req } from "./http.ts";
 
 const SESSION_COOKIE = "sid";
@@ -57,39 +57,38 @@ function setCookie(req: Req, res: ServerResponse, value: string, maxAgeMs: numbe
   res.setHeader("Set-Cookie", parts.join("; "));
 }
 
-export function startSession(req: Req, res: ServerResponse, parentId: number) {
+export async function startSession(req: Req, res: ServerResponse, parentId: number) {
   const token = randomToken();
-  db.prepare("INSERT INTO sessions (token_hash, parent_id, expires_at) VALUES (?, ?, ?)")
-    .run(sha256(token), parentId, Date.now() + SESSION_TTL);
+  await run("INSERT INTO sessions (token_hash, parent_id, expires_at) VALUES (?, ?, ?)", [sha256(token), parentId, Date.now() + SESSION_TTL]);
   setCookie(req, res, token, SESSION_TTL);
 }
 
-export function endSession(req: Req, res: ServerResponse) {
+export async function endSession(req: Req, res: ServerResponse) {
   const token = cookies(req)[SESSION_COOKIE];
-  if (token) db.prepare("DELETE FROM sessions WHERE token_hash = ?").run(sha256(token));
+  if (token) await run("DELETE FROM sessions WHERE token_hash = ?", [sha256(token)]);
   setCookie(req, res, "", 0);
 }
 
-export function requireParent(req: Req) {
+export async function requireParent(req: Req) {
   const token = cookies(req)[SESSION_COOKIE];
   if (!token) throw new HttpError(401, "Not signed in");
 
-  const row = db.prepare(`
+  const row = await get<{ id: number; email: string }>(`
     SELECT p.id, p.email FROM sessions s JOIN parents p ON p.id = s.parent_id
     WHERE s.token_hash = ? AND s.expires_at > ?
-  `).get(sha256(token), Date.now()) as { id: number; email: string } | undefined;
+  `, [sha256(token), Date.now()]);
 
   if (!row) throw new HttpError(401, "Not signed in");
   return row;
 }
 
-export function requireDevice(req: Req) {
+export async function requireDevice(req: Req) {
   const header = req.headers.authorization ?? "";
   const token = header.startsWith("Bearer ") ? header.slice(7) : "";
   if (!token) throw new HttpError(401, "Missing device token");
 
-  const row = db.prepare("SELECT id, name, policy FROM devices WHERE token_hash = ?")
-    .get(sha256(token)) as { id: number; name: string; policy: string } | undefined;
+  const row = await get<{ id: number; name: string; policy: string }>(
+    "SELECT id, name, policy FROM devices WHERE token_hash = ?", [sha256(token)]);
 
   if (!row) throw new HttpError(401, "Device not paired");
   return row;

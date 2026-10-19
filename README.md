@@ -4,7 +4,7 @@
 | ------------ | -------------------------------------------------------------------------- |
 | `electron/`  | Kid browser main process: filtering, tabs, policy sync with the server     |
 | `src/`       | Kid browser UI (React)                                                     |
-| `server/`    | Parent API + hosts the dashboard (Node 24, built-in SQLite, no deps)       |
+| `server/`    | Parent API + hosts the dashboard (Node 24, Turso / libSQL)                 |
 | `dashboard/` | Parent dashboard website (React)                                           |
 
 ## How it works
@@ -25,17 +25,17 @@ npm run dev
 This starts the API (`:8787`), the dashboard (`http://127.0.0.1:5174`), the kid browser UI (`:5173`) and Electron.
 Changes under `src/` and `dashboard/` hot-reload; changes under `electron/` restart Electron, and changes under `server/` restart the API.
 
-## Deploying the parent server
+## Deploying the parent server (free, no credit card)
 
-```bash
-npm run build:dashboard
-cd server && NODE_ENV=production PORT=8787 DATA_DIR=/var/lib/guardian TRUST_PROXY=1 node src/index.ts
-```
+The server stores data in [Turso](https://turso.tech) (hosted SQLite) and runs on [Render](https://render.com)'s free tier.
 
-- Run it behind HTTPS (e.g. a reverse proxy). Set `TRUST_PROXY=1` only when a proxy sets `X-Forwarded-For` / `X-Forwarded-Proto`.
-- `DATA_DIR` holds `guardian.db` (SQLite). Back it up.
-- Before packaging the browser, set `PRODUCTION_SERVER_URL` in `electron/sync.cjs` (must be `https://`),
-  or provide `GUARDIAN_SERVER_URL` at runtime.
+1. Create a Turso database and copy its URL (`libsql://…`) and an auth token.
+2. On Render, choose **New → Blueprint** and select this repo (it reads `render.yaml`).
+3. Set `DATABASE_URL`, `DATABASE_AUTH_TOKEN` and `VITE_GITHUB_REPO` (`owner/repo`, for the download buttons).
+4. Use the `https://…onrender.com` URL as the `SERVER_URL` repo variable below.
+
+Without `DATABASE_URL` the server uses a local file at `DATA_DIR/guardian.db` (default `server/data`), which is what `npm run dev` uses.
+Run `npm --prefix server install` once after cloning.
 
 ## Releasing the desktop app
 
@@ -48,5 +48,3 @@ Pushing a `v*` tag runs `.github/workflows/release.yml`, which builds the macOS 
 ```bash
 git tag v1.0.0 && git push origin v1.0.0
 ```
-
-The server also ships as a Docker image: `docker build --build-arg VITE_GITHUB_REPO=owner/repo -t wonderly . && docker run -p 8787:8787 -v wonderly-data:/data wonderly`.

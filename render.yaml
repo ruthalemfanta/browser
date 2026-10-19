@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: wonderly
+    runtime: docker
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_AUTH_TOKEN
+        sync: false
+      - key: VITE_GITHUB_REPO
+        sync: false

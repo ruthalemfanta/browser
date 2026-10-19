@@ -8,9 +8,10 @@ RUN npm run build:dashboard
 
 FROM node:24-slim
 WORKDIR /app
-ENV NODE_ENV=production PORT=8787 DATA_DIR=/data TRUST_PROXY=1
-COPY server ./server
+ENV NODE_ENV=production PORT=8787 TRUST_PROXY=1
+COPY server/package.json server/package-lock.json ./server/
+RUN npm --prefix server ci --omit=dev
+COPY server/src ./server/src
 COPY --from=build /app/dashboard/dist ./dashboard/dist
-VOLUME /data
 EXPOSE 8787
 CMD ["node", "--disable-warning=ExperimentalWarning", "server/src/index.ts"]
