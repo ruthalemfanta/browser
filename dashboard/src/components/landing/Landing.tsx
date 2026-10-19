@@ -3,8 +3,9 @@ import Link from "../Link";
 import { DOWNLOADS, RELEASES_URL, detectPlatform } from "../../lib/downloads";
 import logo from "../../../../brand/wonderly-logo.svg";
 import logoLight from "../../../../brand/wonderly-logo-light.svg";
-import Mascot from "./Mascot";
-import { BrowserMock, DashboardMock } from "./Mocks";
+import { BrowserMock } from "./Mocks";
+import kidsTablet from "../../../../wonderly-assets/kids-enjoying-tablet-stockcake.jpg";
+import teenWin from "../../../../wonderly-assets/surprised-teen-girl-looking-smartphone-pink-background-showing-win-gesture-over-453763850.jpg.webp";
 import { useReveal } from "./useReveal";
 import "./landing.css";
 import "./motion.css";
@@ -89,7 +90,10 @@ export default function Landing({ signedIn }: { signedIn: boolean }) {
           </div>
           <div className="lp-hero-media lp-rise" style={{ animationDelay: ".5s" }}>
             <BrowserMock />
-            <DashboardMock />
+            <figure className="lp-box lp-photo lp-photo-hero">
+              <img src={kidsTablet} alt="Four kids smiling at a tablet together" />
+              <figcaption className="lp-sticker">● Safe Search on</figcaption>
+            </figure>
           </div>
           <div className="lp-hero-foot lp-rise" style={{ animationDelay: ".8s" }}>
             <p>A web browser made for kids. Safe search, approved websites and a parent dashboard, so children can learn, play and explore on their own while grown-ups stay in the loop.</p>
@@ -137,7 +141,10 @@ export default function Landing({ signedIn }: { signedIn: boolean }) {
             </div>
           </div>
           <div className="lp-stack lp-reveal" style={stagger(2)}>
-            <Mascot />
+            <figure className="lp-box lp-photo lp-photo-teen">
+              <img src={teenWin} alt="Excited girl celebrating while looking at her phone" />
+              <figcaption className="lp-sticker">Approved! ✓</figcaption>
+            </figure>
             <div>
               <div className="lp-ready">Ready to explore?</div>
               <div className="lp-muted">Set up a parent account in under two minutes.</div>

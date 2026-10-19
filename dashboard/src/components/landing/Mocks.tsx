@@ -6,8 +6,6 @@ const RESULTS = [
   { letter: "S", color: "#F3A9E9", title: "Code Your Own T-Rex", url: "scratch.mit.edu" }
 ];
 
-const REQUESTS = ["youtube.com", "scratch.mit.edu", "coolmathgames.com"];
-
 export function BrowserMock() {
   return (
     <div className="lp-mock lp-mock-browser lp-demo" aria-hidden="true">
@@ -29,23 +27,6 @@ export function BrowserMock() {
           <path d="M3 2 L3 19 L8 14.5 L11.5 22 L14.5 20.5 L11 13.5 L18 13.5 Z" fill="#fff" stroke="#111" strokeWidth="2" strokeLinejoin="round" />
         </svg>
       </div>
-    </div>
-  );
-}
-
-export function DashboardMock() {
-  return (
-    <div className="lp-mock lp-mock-dash" aria-hidden="true">
-      <div className="lp-mock-dash-head">Website requests <i className="lp-ping" /></div>
-      {REQUESTS.map((domain, i) => (
-        <div key={domain} className={`lp-mock-row q${i + 1}`}>
-          <span>{domain}</span>
-          {i === 1
-            ? <em className="on">Approved</em>
-            : <em className="lp-flip"><span>Approve</span><span>Approved ✓</span></em>}
-        </div>
-      ))}
-      <div className="lp-mock-toggle"><span>Browsing hours</span><i /></div>
     </div>
   );
 }
