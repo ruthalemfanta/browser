@@ -1,4 +1,7 @@
-const REPO = import.meta.env.VITE_GITHUB_REPO || "ruthalemfanta/browser";
+const REPO = (import.meta.env.VITE_GITHUB_REPO || "ruthalemfanta/browser")
+  .trim()
+  .replace(/^(https?:\/\/)?github\.com\//, "")
+  .replace(/(\.git)?\/*$/, "");
 const BASE = `https://github.com/${REPO}/releases/latest/download`;
 
 export const RELEASES_URL = `https://github.com/${REPO}/releases/latest`;
