@@ -16,6 +16,153 @@ body{margin:0;font-family:'DM Sans',sans-serif;color:#111;background:#fff;-webki
 a{color:#111;text-decoration:underline}
 a:hover{color:#3a8fc2}
 input::placeholder{color:#777}
+html{scroll-behavior:smooth}
+.press{transition:transform .15s,box-shadow .15s}
+.press:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #111!important}
+.navlink{position:relative;overflow:hidden;transition:background .2s}
+.navlink:hover{background:#D9F45F}
+.logo-star{display:inline-block;animation:spin 8s linear infinite}
+.logo:hover .logo-star{animation-duration:1s}
+
+.rise{animation:rise .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--d,0s)}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}}
+
+.explore .ltr{display:inline-block;cursor:default;transition:color .2s,text-shadow .2s;animation:drop .8s cubic-bezier(.3,1.6,.5,1) both,wave 6s ease-in-out infinite;animation-delay:calc(var(--i)*.07s + .15s),calc(var(--i)*.12s + 2s)}
+.explore .ltr:nth-child(3n+1):hover{color:#F3A9E9}
+.explore .ltr:nth-child(3n+2):hover{color:#D9F45F}
+.explore .ltr:nth-child(3n):hover{color:#FFD84D}
+.explore .ltr:hover{text-shadow:5px 5px 0 #111}
+@keyframes drop{from{opacity:0;transform:translateY(-60%) rotate(-12deg)}}
+@keyframes wave{0%,14%,100%{transform:none}7%{transform:translateY(-9%) rotate(-3deg)}}
+
+.floaters{position:absolute;inset:0;pointer-events:none}
+.fl{position:absolute;border:2px solid #111;display:block;animation:bob 7s ease-in-out infinite}
+svg.fl{border:none}
+.fl-a{animation-duration:6s}.fl-b{animation-duration:8s;animation-delay:-2s}.fl-c{animation:bob 7s ease-in-out infinite,spin 14s linear infinite}
+.fl-d{animation-duration:5s;animation-delay:-1s}.fl-e{animation-duration:9s;animation-delay:-3s}.fl-f{animation-duration:6.5s;animation-delay:-4s}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -18px}}
+@keyframes spin{to{rotate:360deg}}
+
+.demo{container-type:inline-size}
+.newtab{background:#7CCBF4}
+.typed{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;max-width:0;animation:type 12s steps(9,end) infinite}
+.caret{display:inline-block;width:2px;height:1.1em;background:#111;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes type{0%,8%{max-width:0}22%,88%{max-width:9.4ch}94%,100%{max-width:0}}
+@keyframes blink{50%{opacity:0}}
+.res{animation:res 12s ease infinite both}
+.r1{animation:res 12s ease infinite both,hl 12s infinite}
+.r2{animation-delay:.18s}.r3{animation-delay:.36s}
+@keyframes res{0%,25%{opacity:0;transform:translateY(14px)}31%,88%{opacity:1;transform:none}94%,100%{opacity:0;transform:translateY(14px)}}
+@keyframes hl{0%,50%{background:#fff}52%,88%{background:#7CCBF4}93%,100%{background:#fff}}
+.cursor{animation:cur 12s ease-in-out infinite;transform-origin:15% 10%}
+@keyframes cur{0%,34%{opacity:0;transform:translate(78cqw,42cqw)}38%{opacity:1;transform:translate(70cqw,38cqw)}48%{transform:translate(32cqw,15cqw)}50%{transform:translate(32cqw,15cqw) scale(.75)}53%,84%{opacity:1;transform:translate(32cqw,15cqw)}90%,100%{opacity:0;transform:translate(40cqw,22cqw)}}
+.stamp{opacity:0;animation:stamp 12s cubic-bezier(.3,1.6,.5,1) infinite}
+@keyframes stamp{0%,51%{opacity:0;transform:rotate(-10deg) scale(2.2)}55%{opacity:1;transform:rotate(-10deg) scale(1)}86%{opacity:1;transform:rotate(-10deg) scale(1)}92%,100%{opacity:0;transform:rotate(-10deg) scale(1)}}
+.safe-pill{animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+
+.buddy-body{animation:float 4s ease-in-out infinite}
+.buddy-shadow{transform-box:fill-box;transform-origin:center;animation:shadow 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes shadow{0%,100%{transform:scaleX(1);opacity:1}50%{transform:scaleX(.8);opacity:.6}}
+.buddy-star{transform-box:fill-box;transform-origin:center;animation:spin 6s linear infinite}
+.buddy-arm{transform-box:view-box;transform-origin:150px 120px;animation:hi 2.6s ease-in-out infinite}
+@keyframes hi{0%,40%,100%{transform:rotate(0)}10%,30%{transform:rotate(-14deg)}20%{transform:rotate(10deg)}}
+.buddy-eyes{transform-box:fill-box;transform-origin:center;animation:eyeblink 5s infinite}
+@keyframes eyeblink{0%,94%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.pupils{transform:translate(var(--px,0px),var(--py,0px));transition:transform .12s ease-out}
+.buddy-panel:hover .buddy-body{animation-duration:1.2s}
+.bubble{animation:bubble 3s ease-in-out infinite}
+@keyframes bubble{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(2deg)}}
+.word{position:absolute;left:14px;top:8px;white-space:nowrap;opacity:0;animation:word 9s infinite;animation-delay:calc(var(--w)*3s)}
+@keyframes word{0%{opacity:0;transform:translateY(8px)}4%,29%{opacity:1;transform:none}33%,100%{opacity:0;transform:translateY(-8px)}}
+.orb{position:absolute;width:22px;height:22px;border:2px solid #111;left:50%;top:52%;margin:-11px;animation:orbit 9s linear infinite}
+.orb-2{animation-delay:-3s}.orb-3{animation-delay:-6s}
+@keyframes orbit{from{transform:rotate(0) translateX(clamp(100px,14vw,160px)) rotate(0)}to{transform:rotate(360deg) translateX(clamp(100px,14vw,160px)) rotate(-360deg)}}
+
+.wiggle{animation:wiggle 5s ease-in-out infinite 3s}
+.wiggle:hover{animation:none}
+@keyframes wiggle{0%,90%,100%{rotate:0deg}92%{rotate:-4deg}94%{rotate:4deg}96%{rotate:-2deg}}
+
+.ticker .track{display:flex;align-items:center;gap:32px;width:max-content;animation:marquee 30s linear infinite;padding-right:32px}
+.ticker:hover .track{animation-play-state:paused}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.tk{display:inline-block;width:16px;height:16px;border:2px solid #111;flex:none}
+.tk-c{border-radius:50%;background:#F3A9E9}.tk-s{background:#7CCBF4}.tk-d{background:#FFD84D;transform:rotate(45deg)}
+
+html.fx .reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0)*100ms)}
+html.fx .reveal.from-left{transform:translateX(-40px)}
+html.fx .reveal.pop{transform:scale(.85) rotate(-2deg);transition-timing-function:ease,cubic-bezier(.3,1.5,.5,1)}
+html.fx .reveal.in{opacity:1;transform:none}
+.feat-list .reveal:nth-child(2){--i:1}.feat-list .reveal:nth-child(3){--i:2}.feat-list .reveal:nth-child(4){--i:3}
+.feat{transition:transform .15s,box-shadow .15s,background .15s}
+.feat:hover{background:#7CCBF4!important;box-shadow:6px 6px 0 #111;transform:translate(-2px,-2px)}
+.feat-num{transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.feat:hover .feat-num{transform:rotate(-12deg) scale(1.1)}
+.feat-arrow{opacity:0;transform:translateX(-12px);transition:opacity .2s,transform .2s}
+.feat:hover .feat-arrow{opacity:1;transform:none}
+
+.tilt{transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.tilt:hover{transform:rotate(-2deg) scale(1.02)}
+.spin-slow{animation:spin 10s linear infinite}
+.mark{background:linear-gradient(#D9F45F,#D9F45F) 0 88%/0 40% no-repeat;transition:background-size .8s ease .4s}
+.in .mark{background-size:100% 40%}
+.chip{transition:transform .2s,background .2s}
+.chip:hover{transform:translateY(-3px) rotate(-2deg);background:#F3A9E9!important}
+
+.newtab .bgl{position:absolute;inset:0;opacity:0;animation:bgcycle 12s infinite;animation-delay:calc(var(--b)*3s)}
+@keyframes bgcycle{0%{opacity:0}5%,25%{opacity:1}30%,100%{opacity:0}}
+.tile{display:flex;align-items:center;justify-content:center;border:2px solid #111;box-shadow:3px 3px 0 #111;font-family:Unbounded;font-weight:700;font-size:clamp(16px,1.8vw,22px);transition:transform .15s}
+html.fx .reveal .tile{opacity:0;transform:scale(.3)}
+html.fx .reveal.in .tile{animation:tilepop .5s cubic-bezier(.3,1.6,.5,1) both;animation-delay:calc(var(--t)*.08s + .4s)}
+.tile:hover{transform:translate(-2px,-2px) rotate(-4deg)!important}
+@keyframes tilepop{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:none}}
+.wave-hand{display:inline-block;transform-origin:70% 80%;animation:hand 2.5s ease-in-out infinite}
+@keyframes hand{0%,60%,100%{transform:rotate(0)}10%,30%{transform:rotate(16deg)}20%,40%{transform:rotate(-10deg)}}
+
+.shield{transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.shield:hover{transform:rotate(-6deg) scale(1.08)}
+.shield .check{stroke-dasharray:70;stroke-dashoffset:70}
+.in .shield .check{transition:stroke-dashoffset .8s ease .5s;stroke-dashoffset:0}
+.card{transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 #111!important}
+.card:hover .ico-bounce{animation:ibounce .6s ease infinite}
+.card:hover .ico-spin{animation:spin 1.2s linear infinite}
+.card:hover .ico-flip{animation:iflip 1s ease infinite}
+.hand{position:absolute;left:50%;top:50%;width:2px;height:12px;background:#111;margin-left:-1px;transform-origin:50% 0;rotate:180deg}
+.card:hover .hand{animation:spin 1.5s linear infinite}
+@keyframes ibounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes iflip{0%{transform:rotate(45deg)}100%{transform:rotate(225deg)}}
+
+.faq{transition:transform .15s}
+.faq:hover{transform:translateX(6px)}
+.faq-ico{transition:transform .3s}
+.faq:hover .faq-ico{transform:rotate(180deg)}
+.faq-a{animation:faqin .35s ease both}
+@keyframes faqin{from{opacity:0;transform:translateY(-8px)}}
+
+.sw{transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.sw:hover{transform:translateY(-6px) rotate(12deg)}
+.bigword span{display:inline-block;transition:color .25s,transform .3s cubic-bezier(.3,1.6,.5,1)}
+.bigword span:hover{transform:translateY(-8%)}
+.bigword span:nth-child(3n+1):hover{color:#F3A9E9}
+.bigword span:nth-child(3n+2):hover{color:#7CCBF4}
+.bigword span:nth-child(3n):hover{color:#D9F45F}
+
+@media (max-width:760px){
+  .hero-grid{grid-template-columns:1fr!important}
+  .buddy-panel{aspect-ratio:4/3}
+  .fl-c,.fl-d,.fl-e{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  html.fx .reveal,html.fx .reveal .tile{opacity:1;transform:none}
+  .typed{max-width:none}
+  .res,.bubble .word:nth-child(2),.newtab .bgl:first-of-type{opacity:1}
+  .cursor,.stamp{opacity:0}
+  .shield .check{stroke-dashoffset:0}
+  .mark{background-size:100% 40%}
+}
 </style>
 </helmet>
 
@@ -27,85 +174,183 @@ input::placeholder{color:#777}
       <div style="display:flex;flex-direction:column;gap:4px;width:22px">
         <span style="height:2px;background:#111"></span><span style="height:2px;background:#111"></span><span style="height:2px;background:#111"></span>
       </div>
-      <div style="font-family:Unbounded;font-weight:700;font-size:22px;letter-spacing:-0.01em">Wonderly</div>
+      <div class="logo" style="font-family:Unbounded;font-weight:700;font-size:22px;letter-spacing:-0.01em;display:flex;align-items:center;gap:8px"><span class="logo-star">✦</span>Wonderly</div>
       <div style="display:flex;justify-content:flex-end">
-        <button onClick="{{ goBrowser }}" style="font-family:'DM Sans';font-weight:700;font-size:14px;background:#D9F45F;border:2px solid #111;box-shadow:4px 4px 0 #111;padding:10px 18px;cursor:pointer" style-active="transform:translate(2px,2px);box-shadow:2px 2px 0 #111">Get It Free</button>
+        <button class="press" onClick="{{ goBrowser }}" style="font-family:'DM Sans';font-weight:700;font-size:14px;background:#D9F45F;border:2px solid #111;box-shadow:4px 4px 0 #111;padding:10px 18px;cursor:pointer" style-active="transform:translate(2px,2px);box-shadow:2px 2px 0 #111">Get It Free</button>
       </div>
     </div>
     <nav style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));border-top:2px solid #111">
-      <a href="#features" style="text-align:center;padding:12px;font-family:Unbounded;font-size:13px;text-decoration:none;color:#111;border-right:2px solid #111" style-hover="background:#D9F45F">Features</a>
-      <a href="#safety" style="text-align:center;padding:12px;font-family:Unbounded;font-size:13px;text-decoration:none;color:#111;border-right:2px solid #111" style-hover="background:#D9F45F">Safety</a>
-      <a href="#features" style="text-align:center;padding:12px;font-family:Unbounded;font-size:13px;text-decoration:none;color:#111;border-right:2px solid #111" style-hover="background:#D9F45F">Parents</a>
-      <a href="#faq" style="text-align:center;padding:12px;font-family:Unbounded;font-size:13px;text-decoration:none;color:#111;border-right:2px solid #111" style-hover="background:#D9F45F">FAQ</a>
-      <a href="#faq" onClick="{{ goBrowser }}" style="text-align:center;padding:12px;font-family:Unbounded;font-size:13px;text-decoration:none;color:#111" style-hover="background:#D9F45F">Try It</a>
+      <a class="navlink" href="#features" style="text-align:center;padding:12px;font-family:Unbounded;font-size:13px;text-decoration:none;color:#111;border-right:2px solid #111">Features</a>
+      <a class="navlink" href="#safety" style="text-align:center;padding:12px;font-family:Unbounded;font-size:13px;text-decoration:none;color:#111;border-right:2px solid #111">Safety</a>
+      <a class="navlink" href="#features" style="text-align:center;padding:12px;font-family:Unbounded;font-size:13px;text-decoration:none;color:#111;border-right:2px solid #111">Parents</a>
+      <a class="navlink" href="#faq" style="text-align:center;padding:12px;font-family:Unbounded;font-size:13px;text-decoration:none;color:#111;border-right:2px solid #111">FAQ</a>
+      <a class="navlink" href="#faq" onClick="{{ goBrowser }}" style="text-align:center;padding:12px;font-family:Unbounded;font-size:13px;text-decoration:none;color:#111">Try It</a>
     </nav>
   </header>
 
-  <section style="background:#7CCBF4;padding:48px 28px 56px;border-bottom:2px solid #111">
-    <div style="max-width:1240px;margin:0 auto">
-      <h1 style="margin:0;text-align:center;font-family:Unbounded;font-weight:400;font-size:clamp(26px,4.4vw,56px);letter-spacing:-0.02em;line-height:1.1">Curious Kids, Safe Adventures</h1>
-      <div style="text-align:center;font-family:Unbounded;font-weight:900;font-size:clamp(64px,15vw,210px);line-height:0.95;letter-spacing:-0.04em;margin:6px 0 36px">EXPLORE</div>
-      <div style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px">
-        <div style="aspect-ratio:16/9;border:2px solid #111;box-shadow:6px 6px 0 #111;background:repeating-linear-gradient(135deg,#ffffff55 0 10px,#ffffff22 10px 20px),#5fb6e3;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:13px">photo: kids browsing together on a tablet</div>
-        <div style="border:2px solid #111;box-shadow:6px 6px 0 #111;background:repeating-linear-gradient(135deg,#ffffff55 0 10px,#ffffff22 10px 20px),#d0d0cc;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:13px;text-align:center;padding:16px">photo: child smiling at laptop</div>
+  <section style="background:#7CCBF4;padding:48px 28px 56px;border-bottom:2px solid #111;position:relative;overflow:hidden">
+    <div aria-hidden="true" class="floaters">
+      <svg class="fl fl-a" viewBox="0 0 40 40" style="left:5%;top:14%;width:46px"><polygon points="20,2 25,15 38,15 27,24 31,37 20,29 9,37 13,24 2,15 15,15" fill="#FFD84D" stroke="#111" stroke-width="2.5" stroke-linejoin="round"></polygon></svg>
+      <span class="fl fl-b" style="right:7%;top:10%;width:38px;height:38px;border-radius:50%;background:#D9F45F"></span>
+      <span class="fl fl-c" style="left:3%;top:52%;width:30px;height:30px;background:#F3A9E9"></span>
+      <svg class="fl fl-d" viewBox="0 0 80 24" style="right:4%;top:44%;width:72px"><path d="M2 12 Q 12 0 22 12 T 42 12 T 62 12 T 78 12" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"></path></svg>
+      <span class="fl fl-e" style="left:2%;top:82%;width:22px;height:22px;background:#fff;transform:rotate(45deg)"></span>
+      <span class="fl fl-f" style="right:22%;bottom:6%;width:26px;height:26px;border-radius:50%;background:#FFD84D"></span>
+    </div>
+
+    <div style="max-width:1240px;margin:0 auto;position:relative">
+      <h1 class="rise" style="margin:0;text-align:center;font-family:Unbounded;font-weight:400;font-size:clamp(26px,4.4vw,56px);letter-spacing:-0.02em;line-height:1.1">Curious Kids, Safe Adventures</h1>
+      <div class="explore" aria-label="EXPLORE" style="text-align:center;font-family:Unbounded;font-weight:900;font-size:clamp(44px,15vw,210px);white-space:nowrap;line-height:0.95;letter-spacing:-0.04em;margin:6px 0 36px"><span class="ltr" style="--i:0">E</span><span class="ltr" style="--i:1">X</span><span class="ltr" style="--i:2">P</span><span class="ltr" style="--i:3">L</span><span class="ltr" style="--i:4">O</span><span class="ltr" style="--i:5">R</span><span class="ltr" style="--i:6">E</span></div>
+
+      <div class="hero-grid" style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px">
+
+        <div class="demo rise" style="--d:.5s;aspect-ratio:16/9;border:2px solid #111;box-shadow:6px 6px 0 #111;background:#fff;display:flex;flex-direction:column;overflow:hidden">
+          <div style="display:flex;align-items:center;gap:1.4cqw;padding:1.3cqw 1.6cqw;border-bottom:2px solid #111;background:#fff">
+            <span style="width:1.6cqw;height:1.6cqw;border:2px solid #111;background:#F3A9E9"></span>
+            <span style="width:1.6cqw;height:1.6cqw;border:2px solid #111;background:#FFD84D"></span>
+            <span style="width:1.6cqw;height:1.6cqw;border:2px solid #111;background:#D9F45F"></span>
+            <div style="flex:1;display:flex;align-items:center;gap:1cqw;border:2px solid #111;padding:.6cqw 1cqw;font-size:1.9cqw;margin-left:1cqw;min-width:0;white-space:nowrap;overflow:hidden">
+              <span class="safe-pill" style="background:#D9F45F;border:2px solid #111;font-weight:700;padding:.2cqw .8cqw;font-size:1.6cqw">● SAFE</span>search.wonderly.kids
+            </div>
+            <span style="width:3.6cqw;height:3.6cqw;border-radius:50%;background:#FFD84D;border:2px solid #111;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.7cqw">M</span>
+          </div>
+          <div style="flex:1;position:relative;background:radial-gradient(#11111133 1.2px,transparent 1.5px) 0 0/16px 16px,#D9F45F;padding:3cqw 5cqw;display:flex;flex-direction:column;gap:1.5cqw">
+            <div style="display:flex;gap:1.2cqw">
+              <div style="flex:1;background:#fff;border:2px solid #111;box-shadow:3px 3px 0 #111;padding:1.1cqw 1.6cqw;font-size:2.6cqw;display:flex;align-items:center;min-height:5.6cqw">
+                <span class="typed">dinosaurs</span><span class="caret"></span>
+              </div>
+              <div style="background:#F3A9E9;border:2px solid #111;box-shadow:3px 3px 0 #111;font-family:Unbounded;font-weight:500;font-size:2cqw;padding:0 2.2cqw;display:flex;align-items:center">Search</div>
+            </div>
+            <div class="res r1" style="background:#fff;border:2px solid #111;box-shadow:3px 3px 0 #111;padding:1.2cqw 1.6cqw;display:flex;gap:1.4cqw;align-items:center">
+              <span style="width:5cqw;height:5cqw;flex:none;border:2px solid #111;background:#FFD84D;display:flex;align-items:center;justify-content:center;font-family:Unbounded;font-weight:700;font-size:2.2cqw">N</span>
+              <div style="min-width:0"><div style="font-family:Unbounded;font-weight:500;font-size:2cqw">Dinosaurs: Amazing Facts</div><div style="font-size:1.6cqw;color:#444;margin-top:.4cqw">kids.nationalgeographic.com</div></div>
+            </div>
+            <div class="res r2" style="background:#fff;border:2px solid #111;box-shadow:3px 3px 0 #111;padding:1.2cqw 1.6cqw;display:flex;gap:1.4cqw;align-items:center">
+              <span style="width:5cqw;height:5cqw;flex:none;border:2px solid #111;background:#7CCBF4;display:flex;align-items:center;justify-content:center;font-family:Unbounded;font-weight:700;font-size:2.2cqw">P</span>
+              <div style="min-width:0"><div style="font-family:Unbounded;font-weight:500;font-size:2cqw">Dino Games &amp; Videos</div><div style="font-size:1.6cqw;color:#444;margin-top:.4cqw">pbskids.org</div></div>
+            </div>
+            <div class="res r3" style="background:#fff;border:2px solid #111;box-shadow:3px 3px 0 #111;padding:1.2cqw 1.6cqw;display:flex;gap:1.4cqw;align-items:center">
+              <span style="width:5cqw;height:5cqw;flex:none;border:2px solid #111;background:#F3A9E9;display:flex;align-items:center;justify-content:center;font-family:Unbounded;font-weight:700;font-size:2.2cqw">S</span>
+              <div style="min-width:0"><div style="font-family:Unbounded;font-weight:500;font-size:2cqw">Code Your Own T-Rex</div><div style="font-size:1.6cqw;color:#444;margin-top:.4cqw">scratch.mit.edu</div></div>
+            </div>
+            <div class="stamp" style="position:absolute;right:7cqw;top:11cqw;background:#fff;border:3px solid #111;box-shadow:3px 3px 0 #111;padding:.8cqw 1.6cqw;font-family:Unbounded;font-weight:700;font-size:2.2cqw">Kid-safe ✓</div>
+            <svg class="cursor" viewBox="0 0 24 24" style="position:absolute;left:0;top:0;width:4cqw"><path d="M3 2 L3 19 L8 14.5 L11.5 22 L14.5 20.5 L11 13.5 L18 13.5 Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"></path></svg>
+          </div>
+        </div>
+
+        <div class="buddy-panel rise" style="--d:.7s;border:2px solid #111;box-shadow:6px 6px 0 #111;background:radial-gradient(#11111122 1.4px,transparent 1.7px) 0 0/20px 20px,#F3A9E9;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:260px">
+          <div class="bubble" style="position:absolute;left:8%;top:9%;background:#fff;border:2px solid #111;box-shadow:3px 3px 0 #111;padding:8px 14px;font-family:Unbounded;font-weight:500;font-size:clamp(12px,1.3vw,16px);z-index:2">
+            <span style="visibility:hidden">Ocean animals?</span>
+            <span class="word" style="--w:0">Dinosaurs?</span>
+            <span class="word" style="--w:1">Outer space?</span>
+            <span class="word" style="--w:2">Ocean animals?</span>
+          </div>
+          <span class="orb orb-1" style="background:#D9F45F"></span>
+          <span class="orb orb-2" style="background:#7CCBF4;border-radius:50%"></span>
+          <span class="orb orb-3" style="background:#FFD84D;transform:rotate(45deg)"></span>
+          <svg class="buddy" viewBox="0 0 200 210" style="width:min(68%,260px);position:relative;z-index:1;overflow:visible">
+            <ellipse class="buddy-shadow" cx="100" cy="196" rx="46" ry="7" fill="#11111133"></ellipse>
+            <g class="buddy-body">
+              <line x1="100" y1="58" x2="100" y2="30" stroke="#111" stroke-width="4" stroke-linecap="round"></line>
+              <polygon class="buddy-star" points="100,8 106,21 120,22 109,31 113,45 100,37 87,45 91,31 80,22 94,21" fill="#7CCBF4" stroke="#111" stroke-width="3.5" stroke-linejoin="round"></polygon>
+              <g class="buddy-arm"><path d="M150 120 Q 172 108 176 82" fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round"></path><circle cx="176" cy="78" r="9" fill="#FFD84D" stroke="#111" stroke-width="4"></circle></g>
+              <path d="M52 128 Q 34 140 36 160" fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round"></path>
+              <circle cx="36" cy="164" r="9" fill="#FFD84D" stroke="#111" stroke-width="4"></circle>
+              <circle cx="100" cy="118" r="60" fill="#FFD84D" stroke="#111" stroke-width="4.5"></circle>
+              <ellipse cx="66" cy="134" rx="9" ry="6" fill="#F3A9E9"></ellipse>
+              <ellipse cx="134" cy="134" rx="9" ry="6" fill="#F3A9E9"></ellipse>
+              <g class="buddy-eyes">
+                <ellipse cx="80" cy="108" rx="14" ry="17" fill="#fff" stroke="#111" stroke-width="4"></ellipse>
+                <ellipse cx="120" cy="108" rx="14" ry="17" fill="#fff" stroke="#111" stroke-width="4"></ellipse>
+                <g class="pupils"><circle cx="80" cy="110" r="7" fill="#111"></circle><circle cx="120" cy="110" r="7" fill="#111"></circle><circle cx="83" cy="106" r="2.2" fill="#fff"></circle><circle cx="123" cy="106" r="2.2" fill="#fff"></circle></g>
+              </g>
+              <path d="M86 140 Q 100 154 114 140" fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round"></path>
+            </g>
+          </svg>
+        </div>
       </div>
-      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px;margin-top:32px">
+
+      <div class="rise" style="--d:.9s;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px;margin-top:32px">
         <p style="margin:0;max-width:520px;font-size:17px;line-height:1.5;text-wrap:pretty">A web browser made for kids. Safe search, approved websites and zero ads, so children can learn, play and explore on their own while grown-ups stay in the loop.</p>
         <div style="display:flex;gap:16px;flex-wrap:wrap">
-          <a href="#features" style="font-weight:700;font-size:15px;background:#fff;border:2px solid #111;box-shadow:4px 4px 0 #111;padding:12px 22px;text-decoration:none;color:#111">See How It Works</a>
-          <button onClick="{{ goBrowser }}" style="font-family:'DM Sans';font-weight:700;font-size:15px;background:#F3A9E9;border:2px solid #111;box-shadow:4px 4px 0 #111;padding:12px 22px;cursor:pointer" style-active="transform:translate(2px,2px);box-shadow:2px 2px 0 #111">Open the Browser →</button>
+          <a class="press" href="#features" style="font-weight:700;font-size:15px;background:#fff;border:2px solid #111;box-shadow:4px 4px 0 #111;padding:12px 22px;text-decoration:none;color:#111">See How It Works</a>
+          <button class="press wiggle" onClick="{{ goBrowser }}" style="font-family:'DM Sans';font-weight:700;font-size:15px;background:#F3A9E9;border:2px solid #111;box-shadow:4px 4px 0 #111;padding:12px 22px;cursor:pointer" style-active="transform:translate(2px,2px);box-shadow:2px 2px 0 #111">Open the Browser →</button>
         </div>
       </div>
     </div>
   </section>
 
-  <div style="background:#D9F45F;border-bottom:2px solid #111;padding:16px 28px;display:flex;flex-wrap:wrap;justify-content:space-around;gap:16px 32px;font-family:Unbounded;font-weight:500;font-size:clamp(14px,1.6vw,20px)">
-    <span>● Kid-Safe Search</span><span>● No Ads</span><span>● No Trackers</span><span>● Approved Sites</span><span>● Parent Controls</span>
+  <div class="ticker" style="background:#D9F45F;border-bottom:2px solid #111;padding:16px 0;overflow:hidden;font-family:Unbounded;font-weight:500;font-size:clamp(14px,1.6vw,20px)">
+    <div class="track">
+      <span>Kid-Safe Search</span><i class="tk tk-c"></i><span>No Ads</span><i class="tk tk-s"></i><span>No Trackers</span><i class="tk tk-d"></i><span>Approved Sites</span><i class="tk tk-c"></i><span>Parent Controls</span><i class="tk tk-s"></i><span>Fun Backgrounds</span><i class="tk tk-d"></i>
+      <span aria-hidden="true">Kid-Safe Search</span><i class="tk tk-c"></i><span aria-hidden="true">No Ads</span><i class="tk tk-s"></i><span aria-hidden="true">No Trackers</span><i class="tk tk-d"></i><span aria-hidden="true">Approved Sites</span><i class="tk tk-c"></i><span aria-hidden="true">Parent Controls</span><i class="tk tk-s"></i><span aria-hidden="true">Fun Backgrounds</span><i class="tk tk-d"></i>
+    </div>
   </div>
 
   <section id="features" style="padding:80px 28px">
     <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px">
-      <div style="display:flex;flex-direction:column;gap:24px">
-        <div style="background:#F3A9E9;border:2px solid #111;box-shadow:6px 6px 0 #111;padding:24px;min-height:220px">
+      <div class="reveal" style="display:flex;flex-direction:column;gap:24px">
+        <div class="tilt" style="background:#F3A9E9;border:2px solid #111;box-shadow:6px 6px 0 #111;padding:24px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;gap:20px">
           <h2 style="margin:0;font-family:Unbounded;font-weight:500;font-size:28px;line-height:1.15;letter-spacing:-0.02em">The Safe Little Corner of the Internet</h2>
+          <svg class="spin-slow" viewBox="0 0 40 40" style="width:44px;align-self:flex-end"><polygon points="20,2 25,15 38,15 27,24 31,37 20,29 9,37 13,24 2,15 15,15" fill="#FFD84D" stroke="#111" stroke-width="2.5" stroke-linejoin="round"></polygon></svg>
         </div>
-        <p style="margin:0;font-size:19px;line-height:1.45;color:#333;text-wrap:pretty">A browser with <b style="color:#111">kid-friendly search</b>, big buttons and <b style="color:#111">your own backgrounds</b>, built for ages 5 to 12.</p>
+        <p style="margin:0;font-size:19px;line-height:1.45;color:#333;text-wrap:pretty">A browser with <b class="mark" style="color:#111">kid-friendly search</b>, big buttons and <b class="mark" style="color:#111">your own backgrounds</b>, built for ages 5 to 12.</p>
       </div>
-      <div style="display:flex;flex-direction:column;gap:24px">
+      <div class="reveal" style="--i:1;display:flex;flex-direction:column;gap:24px">
         <div style="display:flex;flex-wrap:wrap;gap:10px">
-          <span style="border:2px solid #111;padding:6px 12px;font-size:13px">Safe Search</span>
-          <span style="border:2px solid #111;padding:6px 12px;font-size:13px">Quick Access</span>
-          <span style="border:2px solid #111;padding:6px 12px;font-size:13px;background:#7CCBF4">Fun Backgrounds</span>
-          <span style="border:2px solid #111;padding:6px 12px;font-size:13px">Time Limits</span>
-          <span style="border:2px solid #111;padding:6px 12px;font-size:13px;background:#7CCBF4">Parent Dashboard</span>
+          <span class="chip" style="border:2px solid #111;padding:6px 12px;font-size:13px">Safe Search</span>
+          <span class="chip" style="border:2px solid #111;padding:6px 12px;font-size:13px">Quick Access</span>
+          <span class="chip" style="border:2px solid #111;padding:6px 12px;font-size:13px;background:#7CCBF4">Fun Backgrounds</span>
+          <span class="chip" style="border:2px solid #111;padding:6px 12px;font-size:13px">Time Limits</span>
+          <span class="chip" style="border:2px solid #111;padding:6px 12px;font-size:13px;background:#7CCBF4">Parent Dashboard</span>
         </div>
         <div style="background:#D9F45F;border:2px solid #111;box-shadow:6px 6px 0 #111;padding:24px;display:flex;flex-direction:column;gap:28px">
-          <div><div style="font-family:Unbounded;font-weight:500;font-size:44px;letter-spacing:-0.03em">0</div><div style="font-size:18px">Ads or trackers, ever</div></div>
-          <div style="text-align:right"><div style="font-family:Unbounded;font-weight:500;font-size:44px;letter-spacing:-0.03em">5–12</div><div style="font-size:18px">Ages it's designed for</div></div>
+          <div><div data-count="99" style="font-family:Unbounded;font-weight:500;font-size:44px;letter-spacing:-0.03em">0</div><div style="font-size:18px">Ads or trackers, ever</div></div>
+          <div style="text-align:right"><div style="font-family:Unbounded;font-weight:500;font-size:44px;letter-spacing:-0.03em">5–<span data-count="5">12</span></div><div style="font-size:18px">Ages it's designed for</div></div>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:24px">
-        <div style="aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#ffffff55 0 10px,#ffffff22 10px 20px),#e7a6ee;border:2px solid #111;box-shadow:6px 6px 0 #111;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:13px">photo: kid with headphones</div>
+      <div class="reveal" style="--i:2;display:flex;flex-direction:column;gap:24px">
+        <div class="newtab" style="aspect-ratio:4/3;border:2px solid #111;box-shadow:6px 6px 0 #111;position:relative;overflow:hidden;padding:7% 8%;display:flex;flex-direction:column;gap:7%">
+          <span class="bgl" style="--b:0;background:#7CCBF4"></span>
+          <span class="bgl" style="--b:1;background:radial-gradient(#111 1.6px,transparent 1.8px) 0 0/18px 18px,#D9F45F"></span>
+          <span class="bgl" style="--b:2;background:repeating-linear-gradient(45deg,#F3A9E9 0 18px,#f8c9f1 18px 36px)"></span>
+          <span class="bgl" style="--b:3;background:conic-gradient(#FFD84D 25%,#fff0b0 0 50%,#FFD84D 0 75%,#fff0b0 0) 0 0/44px 44px"></span>
+          <div style="position:relative;background:#fff;border:2px solid #111;box-shadow:4px 4px 0 #111;padding:10px 14px;font-family:Unbounded;font-weight:700;font-size:clamp(13px,1.3vw,16px)">Good morning, Mia! <span class="wave-hand">👋</span></div>
+          <div style="position:relative;flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+            <span class="tile" style="--t:0;background:#7CCBF4">P</span>
+            <span class="tile" style="--t:1;background:#FFD84D">N</span>
+            <span class="tile" style="--t:2;background:#D9F45F">K</span>
+            <span class="tile" style="--t:3;background:#F3A9E9">S</span>
+            <span class="tile" style="--t:4;background:#FF9B6A">A</span>
+            <span class="tile" style="--t:5;background:#7CCBF4">D</span>
+          </div>
+        </div>
         <div>
           <div style="font-weight:700;font-size:19px">Ready to explore?</div>
           <div style="font-size:15px;margin-top:6px;color:#333">Set up a profile in under two minutes.</div>
         </div>
-        <div><button onClick="{{ goBrowser }}" style="font-family:'DM Sans';font-weight:700;font-size:14px;background:#F3A9E9;border:2px solid #111;box-shadow:4px 4px 0 #111;padding:10px 18px;cursor:pointer">Try the Browser →</button></div>
+        <div><button class="press" onClick="{{ goBrowser }}" style="font-family:'DM Sans';font-weight:700;font-size:14px;background:#F3A9E9;border:2px solid #111;box-shadow:4px 4px 0 #111;padding:10px 18px;cursor:pointer">Try the Browser →</button></div>
       </div>
     </div>
   </section>
 
   <section style="background:#D9F45F;border-top:2px solid #111;border-bottom:2px solid #111;padding:72px 28px">
     <div style="max-width:1240px;margin:0 auto">
-      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:32px">
+      <div class="reveal" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:32px">
         <h2 style="margin:0;font-family:Unbounded;font-weight:700;font-size:clamp(26px,3.4vw,40px);line-height:1.1;letter-spacing:-0.02em;max-width:620px">Everything a Young Explorer Needs</h2>
-        <button onClick="{{ goBrowser }}" style="font-family:'DM Sans';font-weight:700;font-size:14px;background:#7CCBF4;border:2px solid #111;box-shadow:4px 4px 0 #111;padding:10px 18px;cursor:pointer">See It Live →</button>
+        <button class="press" onClick="{{ goBrowser }}" style="font-family:'DM Sans';font-weight:700;font-size:14px;background:#7CCBF4;border:2px solid #111;box-shadow:4px 4px 0 #111;padding:10px 18px;cursor:pointer">See It Live →</button>
       </div>
-      <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="feat-list" style="display:flex;flex-direction:column;gap:14px">
         <sc-for list="{{ features }}" as="f" hint-placeholder-count="4">
-          <div style="background:#fff;border:2px solid #111;padding:22px 24px;transition:all .15s" style-hover="background:#7CCBF4;box-shadow:6px 6px 0 #111;transform:translate(-2px,-2px)">
-            <div style="font-family:Unbounded;font-weight:500;font-size:18px">{{ f.title }}</div>
-            <div style="font-size:15px;margin-top:8px;color:#222;max-width:760px">{{ f.desc }}</div>
+          <div class="reveal from-left">
+            <div class="feat" style="background:#fff;border:2px solid #111;padding:22px 24px;display:flex;align-items:center;gap:20px">
+              <span class="feat-num" style="font-family:Unbounded;font-weight:700;font-size:15px;width:44px;height:44px;flex:none;border:2px solid #111;display:flex;align-items:center;justify-content:center;background:{{ f.color }}">{{ f.num }}</span>
+              <div style="flex:1;min-width:0">
+                <div style="font-family:Unbounded;font-weight:500;font-size:18px">{{ f.title }}</div>
+                <div style="font-size:15px;margin-top:8px;color:#222;max-width:760px">{{ f.desc }}</div>
+              </div>
+              <span class="feat-arrow" style="font-size:24px;font-weight:700">→</span>
+            </div>
           </div>
         </sc-for>
       </div>
@@ -114,38 +359,41 @@ input::placeholder{color:#777}
 
   <section id="safety" style="padding:80px 28px">
     <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px">
-      <div style="display:flex;flex-direction:column;gap:24px;justify-content:space-between">
+      <div class="reveal" style="display:flex;flex-direction:column;gap:24px;justify-content:space-between">
         <div>
           <h2 style="margin:0;font-family:Unbounded;font-weight:700;font-size:clamp(28px,3.4vw,40px);line-height:1.1;letter-spacing:-0.02em">How We Keep It Safe</h2>
           <p style="font-size:19px;line-height:1.5;margin:20px 0 0;max-width:460px;text-wrap:pretty">Safety is built into every part of Wonderly, from what kids can search to which websites they can open.</p>
         </div>
-        <div><a href="#faq" style="display:inline-block;font-weight:700;font-size:14px;background:#7CCBF4;border:2px solid #111;box-shadow:4px 4px 0 #111;padding:10px 18px;text-decoration:none;color:#111">Read the FAQ →</a></div>
+        <svg class="shield" viewBox="0 0 120 130" style="width:110px"><path d="M60 6 L108 24 L108 62 C108 94 86 114 60 124 C34 114 12 94 12 62 L12 24 Z" fill="#7CCBF4" stroke="#111" stroke-width="4.5" stroke-linejoin="round"></path><path class="check" d="M38 66 L54 82 L84 50" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        <div><a class="press" href="#faq" style="display:inline-block;font-weight:700;font-size:14px;background:#7CCBF4;border:2px solid #111;box-shadow:4px 4px 0 #111;padding:10px 18px;text-decoration:none;color:#111">Read the FAQ →</a></div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">
-        <div style="background:#fff;border:2px solid #111;box-shadow:6px 6px 0 #111;padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;gap:16px"><div style="width:36px;height:36px;border:2px solid #111;background:#FFD84D;border-radius:50%"></div><div style="font-family:Unbounded;font-weight:500;font-size:16px;line-height:1.3">01 —<br>Filtered Search</div></div>
-        <div style="background:#F3A9E9;border:2px solid #111;box-shadow:6px 6px 0 #111;padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;gap:16px"><div style="width:36px;height:36px;border:2px solid #111;background:#D9F45F"></div><div style="font-family:Unbounded;font-weight:500;font-size:16px;line-height:1.3">02 —<br>Approved Sites Only</div></div>
-        <div style="background:#7CCBF4;border:2px solid #111;box-shadow:6px 6px 0 #111;padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;gap:16px"><div style="width:30px;height:30px;border:2px solid #111;background:#F3A9E9;transform:rotate(45deg);margin:3px"></div><div style="font-family:Unbounded;font-weight:500;font-size:16px;line-height:1.3">03 —<br>No Ads or Tracking</div></div>
-        <div style="background:#fff;border:2px solid #111;box-shadow:6px 6px 0 #111;padding:20px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;gap:16px"><div style="width:36px;height:36px;border:2px solid #111;background:#7CCBF4;border-radius:50%"></div><div style="font-family:Unbounded;font-weight:500;font-size:16px;line-height:1.3">04 —<br>Healthy Time Limits</div></div>
+        <div class="reveal pop" style="--i:0"><div class="card" style="background:#fff;border:2px solid #111;box-shadow:6px 6px 0 #111;padding:20px;min-height:170px;height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:16px"><div class="ico ico-bounce" style="width:36px;height:36px;border:2px solid #111;background:#FFD84D;border-radius:50%"></div><div style="font-family:Unbounded;font-weight:500;font-size:16px;line-height:1.3">01 —<br>Filtered Search</div></div></div>
+        <div class="reveal pop" style="--i:1"><div class="card" style="background:#F3A9E9;border:2px solid #111;box-shadow:6px 6px 0 #111;padding:20px;min-height:170px;height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:16px"><div class="ico ico-spin" style="width:36px;height:36px;border:2px solid #111;background:#D9F45F"></div><div style="font-family:Unbounded;font-weight:500;font-size:16px;line-height:1.3">02 —<br>Approved Sites Only</div></div></div>
+        <div class="reveal pop" style="--i:2"><div class="card" style="background:#7CCBF4;border:2px solid #111;box-shadow:6px 6px 0 #111;padding:20px;min-height:170px;height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:16px"><div class="ico ico-flip" style="width:30px;height:30px;border:2px solid #111;background:#F3A9E9;transform:rotate(45deg);margin:3px"></div><div style="font-family:Unbounded;font-weight:500;font-size:16px;line-height:1.3">03 —<br>No Ads or Tracking</div></div></div>
+        <div class="reveal pop" style="--i:3"><div class="card" style="background:#fff;border:2px solid #111;box-shadow:6px 6px 0 #111;padding:20px;min-height:170px;height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:16px"><div class="ico ico-clock" style="width:36px;height:36px;border:2px solid #111;background:#7CCBF4;border-radius:50%;position:relative"><span class="hand"></span></div><div style="font-family:Unbounded;font-weight:500;font-size:16px;line-height:1.3">04 —<br>Healthy Time Limits</div></div></div>
       </div>
     </div>
   </section>
 
   <section id="faq" style="padding:72px 28px 96px;border-top:2px solid #111">
     <div style="max-width:1240px;margin:0 auto">
-      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;margin-bottom:40px">
+      <div class="reveal" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;margin-bottom:40px">
         <h2 style="margin:0;font-family:Unbounded;font-weight:700;font-size:clamp(28px,3.4vw,40px);line-height:1.1;letter-spacing:-0.02em">Frequently Asked Questions</h2>
         <p style="margin:0;max-width:420px;font-size:15px;color:#444">Everything parents need to know about keeping kids safe online with Wonderly.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:18px">
         <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
-          <div onClick="{{ q.toggle }}" style="background:{{ q.bg }};border:2px solid #111;box-shadow:{{ q.shadow }};padding:20px 22px;cursor:pointer">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
-              <div style="font-family:Unbounded;font-weight:500;font-size:17px">{{ q.q }}</div>
-              <div style="width:30px;height:30px;flex:none;border-radius:50%;background:{{ q.iconBg }};color:{{ q.iconColor }};border:2px solid #111;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">{{ q.icon }}</div>
+          <div class="reveal">
+            <div class="faq" onClick="{{ q.toggle }}" style="background:{{ q.bg }};border:2px solid #111;box-shadow:{{ q.shadow }};padding:20px 22px;cursor:pointer">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
+                <div style="font-family:Unbounded;font-weight:500;font-size:17px">{{ q.q }}</div>
+                <div class="faq-ico" style="width:30px;height:30px;flex:none;border-radius:50%;background:{{ q.iconBg }};color:{{ q.iconColor }};border:2px solid #111;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">{{ q.icon }}</div>
+              </div>
+              <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+                <div class="faq-a" style="font-size:15px;line-height:1.5;margin-top:12px;max-width:760px">{{ q.a }}</div>
+              </sc-if>
             </div>
-            <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
-              <div style="font-size:15px;line-height:1.5;margin-top:12px;max-width:760px">{{ q.a }}</div>
-            </sc-if>
           </div>
         </sc-for>
       </div>
@@ -158,14 +406,14 @@ input::placeholder{color:#777}
         <div style="font-family:Unbounded;font-weight:700;font-size:18px">Wonderly</div>
         <div style="font-size:13px;color:#ccc;line-height:1.6">A safe browser for curious kids.<br>hello@wonderly.kids</div>
         <div style="display:flex;gap:8px">
-          <span style="width:24px;height:24px;background:#F3A9E9;border-radius:6px"></span><span style="width:24px;height:24px;background:#7CCBF4;border-radius:6px"></span><span style="width:24px;height:24px;background:#D9F45F;border-radius:6px"></span>
+          <span class="sw" style="width:24px;height:24px;background:#F3A9E9;border-radius:6px"></span><span class="sw" style="width:24px;height:24px;background:#7CCBF4;border-radius:6px"></span><span class="sw" style="width:24px;height:24px;background:#D9F45F;border-radius:6px"></span>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;color:#ccc"><div style="font-weight:700;color:#fff;margin-bottom:6px">Product</div><span>Safe Search</span><span>Quick Access</span><span>Backgrounds</span><span>Download</span></div>
       <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;color:#ccc"><div style="font-weight:700;color:#fff;margin-bottom:6px">Parents</div><span>Parent Dashboard</span><span>Time Limits</span><span>Approved Sites</span><span>Safety Guide</span></div>
       <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;color:#ccc"><div style="font-weight:700;color:#fff;margin-bottom:6px">Support</div><span>FAQs</span><span>Help Center</span><span>Privacy Policy</span><span>Terms</span></div>
     </div>
-    <div style="font-family:Unbounded;font-weight:900;font-size:clamp(60px,15.5vw,240px);letter-spacing:-0.05em;color:#3a3a3a;line-height:0.8;margin-top:56px;text-align:center;white-space:nowrap">Wonderly</div>
+    <div class="bigword reveal" aria-label="Wonderly" style="font-family:Unbounded;font-weight:900;font-size:clamp(60px,15.5vw,240px);letter-spacing:-0.05em;color:#3a3a3a;line-height:0.8;margin-top:56px;text-align:center;white-space:nowrap"><span>W</span><span>o</span><span>n</span><span>d</span><span>e</span><span>r</span><span>l</span><span>y</span></div>
     <div style="text-align:center;font-size:11px;color:#999;padding:16px 0 20px">© 2026 Wonderly. All rights reserved.</div>
   </footer>
 </div>
@@ -345,6 +593,16 @@ const RES = [
   { s: 2, t: q => `Learn About ${q}`, d: 'Short lessons and activities you can do at your own pace.' },
   { s: 3, t: q => `Make Your Own ${q} Project`, d: 'Build, draw and code your own creations.' }
 ];
+const countTo = el => {
+  const to = +el.textContent, from = +el.dataset.count, t0 = performance.now();
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const step = t => {
+    const p = Math.min(1, (t - t0) / 1400), v = from + (to - from) * (1 - Math.pow(1 - p, 3));
+    el.textContent = Math.round(v);
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+};
 const cap = s => s.replace(/\b\w/g, c => c.toUpperCase());
 const ls = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } };
 
@@ -355,6 +613,33 @@ class Component extends DCLogic {
     tabs: [{ id: 1, kind: 'new' }], active: 0, nextId: 2,
     q: '', addr: '', bg: ls('wl-bg') || 'sky', customBg: ls('wl-bg-custom'), bgOpen: false
   };
+  componentDidMount() {
+    this.onMove = e => {
+      const el = document.querySelector('.pupils'); if (!el) return;
+      const r = el.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+      const d = Math.hypot(dx, dy) || 1, k = Math.min(1, d / 260) * 5;
+      el.style.setProperty('--px', (dx / d * k).toFixed(2) + 'px');
+      el.style.setProperty('--py', (dy / d * k).toFixed(2) + 'px');
+    };
+    window.addEventListener('mousemove', this.onMove, { passive: true });
+    this.fx();
+  }
+  componentDidUpdate() { this.fx(); }
+  componentWillUnmount() {
+    window.removeEventListener('mousemove', this.onMove);
+    this.io && this.io.disconnect();
+  }
+  fx() {
+    if (typeof IntersectionObserver === 'undefined') return;
+    document.documentElement.classList.add('fx');
+    this.io = this.io || new IntersectionObserver(entries => entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      this.io.unobserve(e.target);
+      e.target.querySelectorAll('[data-count]').forEach(countTo);
+    }), { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal:not([data-io])').forEach(el => { el.dataset.io = '1'; this.io.observe(el); });
+  }
   updTab(patch, addr) {
     this.setState(s => ({ tabs: s.tabs.map((t, i) => i === s.active ? { ...t, ...patch } : t), addr: addr ?? s.addr }));
   }
@@ -380,7 +665,7 @@ class Component extends DCLogic {
       goBrowser: (e) => { e && e.preventDefault && e.preventDefault(); this.setState({ view: 'browser' }); window.scrollTo(0, 0); },
       landBtnBg: s.view === 'landing' ? '#D9F45F' : 'transparent', landBtnColor: s.view === 'landing' ? '#111' : '#fff',
       browBtnBg: s.view === 'browser' ? '#D9F45F' : 'transparent', browBtnColor: s.view === 'browser' ? '#111' : '#fff',
-      features: FEATURES,
+      features: FEATURES.map((f, i) => ({ ...f, num: String(i + 1).padStart(2, '0'), color: ['#FFD84D', '#F3A9E9', '#7CCBF4', '#D9F45F'][i % 4] })),
       faqs: FAQS.map((f, i) => {
         const open = s.faqOpen === i;
         return { ...f, open, bg: open ? '#D9F45F' : '#fff', shadow: open ? '6px 6px 0 #111' : 'none', icon: open ? '▲' : '▼', iconBg: open ? '#fff' : '#111', iconColor: open ? '#111' : '#fff', toggle: () => this.setState({ faqOpen: open ? -1 : i }) };
