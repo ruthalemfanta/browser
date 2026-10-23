@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ShieldCheck } from "lucide-react";
 import { api } from "../api";
 import Link from "./Link";
 import logo from "../../../brand/wonderly-logo.svg";
@@ -34,7 +33,7 @@ export default function AuthPage({ onSignedIn }: { onSignedIn: (email: string) =
           submit();
         }}
       >
-        <ShieldCheck size={28} className="auth-icon" />
+    
         <h1>{mode === "login" ? "Parent sign in" : "Create a parent account"}</h1>
         <p>Manage websites, words and browsing hours for your child's browser.</p>
 
