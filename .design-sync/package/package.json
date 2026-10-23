@@ -1,0 +1,11 @@
+{
+  "name": "wonderly-ds",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "module": "dist/index.js",
+  "types": "dist/types/.design-sync/package/src/index.d.ts",
+  "scripts": {
+    "build": "vite build && tsc -p tsconfig.json"
+  }
+}

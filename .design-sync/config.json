@@ -1,0 +1,82 @@
+{
+  "projectId": "8d0d563b-be48-424a-b3e9-2a2478f15596",
+  "shape": "package",
+  "pkg": "wonderly-ds",
+  "globalName": "Wonderly",
+  "entry": ".design-sync/package/dist/index.js",
+  "buildCmd": "npm --prefix .design-sync/package run build",
+  "cssEntry": "dist/style.css",
+  "docsMap": {
+    "BrowserApp": "../groups/browser.md",
+    "HomePage": "../groups/browser.md",
+    "BlockedPage": "../groups/browser.md",
+    "BackgroundPicker": "../groups/browser.md",
+    "PairSetup": "../groups/browser.md",
+    "Dashboard": "../groups/parents.md",
+    "DevicePanel": "../groups/parents.md",
+    "AddDevice": "../groups/parents.md",
+    "DeviceSettings": "../groups/parents.md",
+    "ActivityLog": "../groups/parents.md",
+    "ListEditor": "../groups/parents.md",
+    "Card": "../groups/parents.md",
+    "Toggle": "../groups/parents.md",
+    "AuthPage": "../groups/parents.md",
+    "Link": "../groups/parents.md",
+    "Landing": "../groups/marketing.md",
+    "BrowserMock": "../groups/marketing.md",
+    "BrowserSurface": "../groups/foundations.md",
+    "ParentsSurface": "../groups/foundations.md",
+    "DemoBackend": "../groups/foundations.md"
+  },
+  "dtsPropsFor": {
+    "BlockedPage": "info: { url: string; host: string; reason: \"setup\" | \"schedule\" | \"insecure\" | \"invalid\" | \"ip-address\" | \"blocked-site\" | \"blocked-word\" | \"blocked-content\" | \"not-allowed\" | \"download\" | \"unreachable\"; detail?: string }; onBack: () => void; onHome: () => void;",
+    "DeviceSettings": "device: { id: number; name: string; lastSeen: number | null; createdAt: number; pending: number; online: boolean }; onChanged: () => void;",
+    "DevicePanel": "device: { id: number; name: string; lastSeen: number | null; createdAt: number; pending: number; online: boolean }; section: \"requests\" | \"sites\" | \"words\" | \"protection\" | \"activity\" | \"device\"; onDevicesChanged: () => void;",
+    "Link": "to: string; className?: string; style?: React.CSSProperties; children?: React.ReactNode; onClick?: React.MouseEventHandler<HTMLAnchorElement>;",
+    "BrowserSurface": "children: React.ReactNode; className?: string; style?: React.CSSProperties;",
+    "ParentsSurface": "children: React.ReactNode; className?: string; style?: React.CSSProperties;",
+    "DemoBackend": "/** Kids browser state, merged over defaults (one home tab, allowlist mode, 6 approved sites). setupRequired: true shows the pairing lock screen. */ browser?: { tabs?: { id: number; title: string; url: string; loading: boolean; showingPage: boolean; blocked: { url: string; host: string; reason: \"setup\" | \"schedule\" | \"insecure\" | \"invalid\" | \"ip-address\" | \"blocked-site\" | \"blocked-word\" | \"blocked-content\" | \"not-allowed\" | \"download\" | \"unreachable\"; detail?: string } | null }[]; activeTabId?: number | null; pendingSites?: string[]; approvedSites?: string[]; mode?: \"allowlist\" | \"blocklist\"; setupRequired?: boolean }; /** Parent account email; null = signed out. */ account?: string | null; devices?: { id: number; name: string; lastSeen: number | null; createdAt: number; pending: number; online: boolean }[]; /** Merged over the default policy. */ policy?: { mode?: \"allowlist\" | \"blocklist\"; allowedSites?: string[]; blockedSites?: string[]; blockedWords?: string[]; safeSearch?: boolean; familyDns?: \"cleanbrowsing\" | \"cloudflare\" | \"off\"; scanPageText?: boolean; blockDownloads?: boolean; schedule?: { enabled: boolean; start: string; end: string } }; /** Pending website requests (domains). */ requests?: string[]; log?: { ts: number; type: \"visit\" | \"blocked\" | \"admin\" | \"tamper\"; url?: string; reason?: \"setup\" | \"schedule\" | \"insecure\" | \"invalid\" | \"ip-address\" | \"blocked-site\" | \"blocked-word\" | \"blocked-content\" | \"not-allowed\" | \"download\" | \"unreachable\"; detail?: string }[]; children?: React.ReactNode;"
+  },
+  "overrides": {
+    "HomePage": {
+      "cardMode": "column"
+    },
+    "BlockedPage": {
+      "cardMode": "column"
+    },
+    "BrowserApp": {
+      "cardMode": "single",
+      "primaryStory": "BlockedTab",
+      "viewport": "1100x720"
+    },
+    "Dashboard": {
+      "cardMode": "single",
+      "primaryStory": "TwoDevices",
+      "viewport": "1200x820"
+    },
+    "Landing": {
+      "cardMode": "single",
+      "primaryStory": "SignedOut",
+      "viewport": "1280x900"
+    },
+    "AuthPage": {
+      "cardMode": "single",
+      "viewport": "900x760"
+    },
+    "PairSetup": {
+      "cardMode": "single",
+      "viewport": "900x720"
+    },
+    "DevicePanel": {
+      "cardMode": "column"
+    },
+    "DemoBackend": {
+      "cardMode": "single",
+      "viewport": "900x520"
+    },
+    "BrowserSurface": {
+      "cardMode": "column"
+    }
+  },
+  "readmeHeader": ".design-sync/conventions.md"
+}
